@@ -1,0 +1,31 @@
+# 查看当前有哪些conda环境
+conda env list
+
+# 如果你只是「装乱了 pip 包」（不想删整个环境）
+pip freeze > old.txt      # 可选，备份
+pip uninstall -y -r old.txt
+
+# 导出依赖
+pip freeze > requirements.txt
+
+# 1. 新环境
+conda create -n dehaze python=3.8 -y
+conda activate dehaze
+
+# 2. 看 CUDA
+nvidia-smi
+
+# 3. 装 PyTorch（示例：CUDA 11.8）
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
+
+# 4. 装其余依赖
+pip install -r requirements.txt
+# 训练
+nohup python train_model.py > train.log 2>&1 &
+
+# 查看占用
+watch -n 1 nvidia-smi
+
+nohup python3 train_model.py > ../train.log 2>&1 &
+
+tail -f ./train.log
