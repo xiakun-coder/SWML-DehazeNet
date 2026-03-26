@@ -1,7 +1,0 @@
-所有优化均在优化一的基础上进行：
-1.修改了loss函数计算，加入了上采样时的y2和y3，
-loss公式仿照这一篇进行的修改：TPAMI2024Revitalizing_Convolutional_Network_for_Image_Restoration.pdf
-但是里面参数是随便取的，还没有调参过
-2.改了下通道卷积（）还没训练->已经训练，参数保存至：dehazing_model_best_3_channel，效果：
-Average SSIM: 0.8677409211794536
-Average PSNR: 23.25479581620958
