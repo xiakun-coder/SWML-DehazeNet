@@ -1,2 +1,0 @@
-Number of trainable parameters: 6,878,730
-Model size: 26.24 MB
