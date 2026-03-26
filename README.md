@@ -10,7 +10,7 @@ git clone https://github.com/xiakun-coder/SWML-DehazeNet.git
 cd SWML-DehazeNet
 
 # Create and activate a virtual environment (optional but recommended)
-conda create -n swml python=3.8
+conda create -n swml python=3.9.23
 conda activate swml
 
 # Install all required packages
