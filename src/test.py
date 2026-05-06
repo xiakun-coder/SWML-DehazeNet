@@ -1,5 +1,5 @@
 import torch
-import dehazing_model
+import dehazing_model_Low_Enhangcement
 from pathlib import Path
 from dataloader import MyData_Test_Single
 import os
@@ -53,7 +53,7 @@ def process_images(model, test_data, storage_path, Img_size=(1024,1024)):
     
 
 
-model = dehazing_model.Dehazing_Model()  # Replace with your model class
+model = dehazing_model_Low_Enhangcement.Dehazing_Model()  # Replace with your model class
 
 
 

@@ -1,4 +1,4 @@
-from dehazing_model import Dehazing_Model
+from dehazing_model_Low_Enhangcement import Dehazing_Model
 import torch 
 import time
 import os
