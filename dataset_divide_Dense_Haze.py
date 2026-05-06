@@ -22,8 +22,6 @@ for dir_path in [output_patch_path, output_gt_patch, output_hazy_patch]:
     dir_path.mkdir(parents=True, exist_ok=True)
 
 # ================= 参数 =================
-# patch_size = 1024
-# stride = 512
 patch_size = 1024
 stride = 512
 
@@ -57,8 +55,6 @@ def extract_patches(image_path, output_dir, prefix, patch_size, stride):
         print(f"错误：处理图像 {image_path} 时失败 - {str(e)}")
 
 
-# ================= Dense-Haze 适配核心修改 =================
-
 # 读取 png 文件
 gt_files = sorted(gt_dir.glob("*_GT.png"))
 hazy_files = sorted(hazy_dir.glob("*_hazy.png"))
@@ -79,7 +75,7 @@ for gt_file, hazy_file in tqdm(zip(gt_files, hazy_files), total=len(gt_files)):
     extract_patches(gt_file, output_gt_patch, prefix, patch_size, stride)
     extract_patches(hazy_file, output_hazy_patch, prefix, patch_size, stride)
 
-# ================= 统计 =================
+
 gt_patch_count = len(list(output_gt_patch.glob('*.jpg')))
 hazy_patch_count = len(list(output_hazy_patch.glob('*.jpg')))
 

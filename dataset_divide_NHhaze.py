@@ -55,9 +55,6 @@ def extract_patches(image_path, output_dir, prefix, patch_size, stride):
         print(f"错误：处理图像 {image_path} 时失败 - {str(e)}")
 
 
-# ================= Dense-Haze 适配核心修改 =================
-
-# 读取 png 文件
 gt_files = sorted(gt_dir.glob("*_GT.png"))
 hazy_files = sorted(hazy_dir.glob("*_hazy.png"))
 

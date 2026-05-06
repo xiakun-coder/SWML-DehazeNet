@@ -220,14 +220,7 @@ def loss_fn(pred_list, target):
         0.1 * loss_fft +
         0.5 * loss_consistency   # 推荐权重 0.2 ~ 1.0
     )
-    # --------- Total loss ---------densehaze
-    # loss = (
-    #         loss_content
-    #         + 1.0 * loss_dwt
-    #         + 0.05 * loss_fft
-    #         + 0.1 * loss_consistency
-    # )
-    #
+
     return loss
     # --------- 消融1 实验1 ---------
     # loss = (
@@ -397,19 +390,16 @@ for epoch in range(NUM_EPOCHS):
     ], dim=0)
 
     grid = torchvision.utils.make_grid(images, nrow=8)
-
-    # Convert the grid to a numpy array and transpose the dimensions for displaying
     grid = grid.cpu().numpy().transpose((1, 2, 0))
 
-    # Display the grid
+
     plt.figure(figsize=(20, 10))
     plt.imshow(grid)
     plt.axis('off')
 
-    # Save the grid to a file
+
     plt.savefig(f'./reports/figures/Validation Generation/image_grid_{epoch + 1}.jpg', dpi=300)
 
-    # Close the figure to free up memory
     plt.close()
 
     # Plotting the Losses
@@ -426,13 +416,11 @@ for epoch in range(NUM_EPOCHS):
     plt.ylabel('Loss')
     plt.legend()
 
-    # Save the figure to a file
     plt.savefig(f'./reports/figures/loss_plot_epoch.jpg')
 
-    # Close the figure to free up memory
     plt.close()
 
-    # Plotting the Learning Rate
+
     epochs = range(1, len(learning_rate_list) + 1)
 
     plt.figure(figsize=(12, 6))
@@ -444,13 +432,13 @@ for epoch in range(NUM_EPOCHS):
     plt.ylabel('Learning Rate')
     plt.legend()
 
-    # Save the figure to a file
+
     plt.savefig(f'./reports/figures/learning_rate_epoch.jpg')
 
-    # Close the figure to free up memory
+
     plt.close()
 
-    # Plotting the PSNR
+    # PSNR
     plt.figure(figsize=(12, 6))
     plt.plot(epochs, validation_whole_psnr, label='Validation Whole PSNR')
     plt.plot(epochs, validation_patch_psnr, label='Validation Patch PSNR')
@@ -458,12 +446,12 @@ for epoch in range(NUM_EPOCHS):
     plt.xlabel('Epochs')
     plt.ylabel('PSNR')
     plt.legend()
-    # Save the figure to a file
+
     plt.savefig(f'./reports/figures/psnr_plot_epoch.jpg')
-    # Close the figure to free up memory
+
     plt.close()
 
-    # Plotting the SSIM
+    # SSIM
     plt.figure(figsize=(12, 6))
     plt.plot(epochs, validation_whole_ssim, label='Validation Whole SSIM')
     plt.plot(epochs, validation_patch_ssim, label='Validation Patch SSIM')
@@ -471,12 +459,12 @@ for epoch in range(NUM_EPOCHS):
     plt.xlabel('Epochs')
     plt.ylabel('SSIM')
     plt.legend()
-    # Save the figure to a file
+
     plt.savefig(f'./reports/figures/ssim_plot_epoch.jpg')
-    # Close the figure to free up memory
+
     plt.close()
 
-    # Plotting the MSE
+    # MSE
     plt.figure(figsize=(12, 6))
     plt.plot(epochs, validation_whole_mse, label='Validation Whole MSE')
     plt.plot(epochs, validation_patch_mse, label='Validation Patch MSE')
@@ -484,9 +472,9 @@ for epoch in range(NUM_EPOCHS):
     plt.xlabel('Epochs')
     plt.ylabel('MSE')
     plt.legend()
-    # Save the figure to a file
+
     plt.savefig(f'./reports/figures/mse_plot_epoch.jpg')
-    # Close the figure to free up memory
+
     plt.close()
 
     end_time = time.time()
@@ -496,8 +484,8 @@ for epoch in range(NUM_EPOCHS):
     # 判断是否为最优模型（以验证整体损失为例，也可换validation_patch_loss）
     current_val_psnr = validation_patch_psnr[-1]  # 当前epoch的验证整体损失
     if current_val_psnr > best_val_psnr:
-        best_val_psnr = current_val_psnr  # 更新最优损失
-        torch.save(model.state_dict(), best_model_path)  # 保存最优权重
+        best_val_psnr = current_val_psnr  # 最优损失
+        torch.save(model.state_dict(), best_model_path)  # 最优权重
         print(f'Best model updated! Epoch: {epoch + 1}, Best Val PSNR: {best_val_psnr:.4f}')
 
     if epoch == 10:
