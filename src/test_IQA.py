@@ -19,25 +19,6 @@ Image_size=(1024,1024)
 # Image_size=(512,512)
 
 # Pick the model weights based on the dataset it was trained on. Comment out the other model paths
-#model_path='../models/RD_dehazing_model_final.pth'  #For model trained on RESIDE dataset
-#model_path='../models/OH-dehazing_model_final.pth'  #For model trained on O-HAZE dataset
-#model_path='../models/NH_dehazing_model_final.pth'  #For model trained on NH-HAZE dataset
-#model_path='../models/DH_dehazing_model_final.pth'  #For model trained on D-HAZE dataset
-#model_path='../models/dehazing_model_final.pth'
-#model_path='../models/dehazing_model_best_3_channel.pth'
-#model_path='../models/dehazing_model_best_3_channel_Consistencyloss.pth'
-#model_path='../models/dehazing_model_best_3_channel_Consistencyloss_架构修正1.pth'
-#model_path = '../models/dehazing_model_best_3_channel_Consistencyloss_架构修正完全.pth'
-#model_path = '../models/dehazing_model_best_3_channel_Consistencyloss_架构修正完全1.pth'
-#model_path='../models/dehazing_model_final_Low_enhance_100.pth'
-#model_path = '../models/修改后的输入集/dehazing_model_best_3_channel_Consistencyloss_架构修正完全1.pth'
-#model_path = '../models/修改后的输入集/dehazing_model_best_3_channel_Consistencyloss_优化一二完成.pth'
-#model_path = '../models/消融2/baseline.pth'
-#model_path = '../models/DenseHaze/dehazing_model_120.pth'
-#model_path = '../models/DenseHaze/5patchsize_512_test_change.pth'
-#model_path = '../models/NHHaze/4_752div_1024input.pth'
-#model_path = '../models/NHHaze/dehazing_model_50.pth'
-# model_path = '../models/SOTS/3_noNormalize.pth'
 model_path = '../models/OHaze/1.pth'
 
 input_path = script_dir  / '..' / 'test_input'
